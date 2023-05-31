@@ -319,6 +319,17 @@ public class List<ContentType> {
     }
   }
 
+  public int size() {
+		int i = 0; 
+		if (!this.isEmpty()) {
+			while (this.hasAccess()) {
+				i++;
+				this.next();
+			}
+		}
+		return i;
+	}
+
   /**
    * Liefert den Vorgaengerknoten des Knotens pNode. Ist die Liste leer, pNode
    * == null, pNode nicht in der Liste oder pNode der erste Knoten der Liste,
