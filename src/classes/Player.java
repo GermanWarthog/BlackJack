@@ -4,8 +4,13 @@ public class Player {
     private String name;
     private Deck deck; 
 
-    public Player(String name) {
+    public Player(String name, Deck deck) {
         this.name = name;
+        this.deck = deck;
+    }
+
+    public void addCard(Card card) {
+        this.deck.getCardStack().push(card);
     }
 
     public String getName() {

@@ -5,7 +5,7 @@ public class Dealer extends Player {
     private Deck deck;
 
     public Dealer(){
-        super("Dealer");
+        super("Dealer", new Deck());
     }
 
     public Deck getDeck() {

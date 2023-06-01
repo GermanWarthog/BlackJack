@@ -1,3 +1,4 @@
+package imports;
 /**
  * <p>
  * Materialien zu den zentralen NRW-Abiturpruefungen im Fach Informatik ab 2018
@@ -321,6 +322,7 @@ public class List<ContentType> {
 
   public int size() {
 		int i = 0; 
+    this.toFirst();
 		if (!this.isEmpty()) {
 			while (this.hasAccess()) {
 				i++;

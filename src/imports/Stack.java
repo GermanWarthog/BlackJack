@@ -1,4 +1,6 @@
- /**
+package imports;
+
+/**
  * <p>
  * Materialien zu den zentralen NRW-Abiturpruefungen im Fach Informatik ab 2018
  * </p>
@@ -88,8 +90,8 @@ public class Stack<ContentType> {
    * Das Objekt pContentType wird oben auf den Stapel gelegt. Falls
    * pContentType gleich null ist, bleibt der Stapel unveraendert.
    * 
-   * @param pContent 
-   *        das einzufuegende Objekt vom Typ ContentType
+   * @param pContent
+   *                 das einzufuegende Objekt vom Typ ContentType
    */
   public void push(ContentType pContent) {
     if (pContent != null) {
