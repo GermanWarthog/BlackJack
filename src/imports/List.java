@@ -1,4 +1,5 @@
 package imports;
+
 /**
  * <p>
  * Materialien zu den zentralen NRW-Abiturpruefungen im Fach Informatik ab 2018
@@ -11,7 +12,8 @@ package imports;
  * angeordnete Objekte vom Typ ContentType. Auf hoechstens ein Listenobjekt,
  * aktuellesObjekt genannt, kann jeweils zugegriffen werden.<br />
  * Wenn eine Liste leer ist, vollstaendig durchlaufen wurde oder das aktuelle
- * Objekt am Ende der Liste geloescht wurde, gibt es kein aktuelles Objekt.<br />
+ * Objekt am Ende der Liste geloescht wurde, gibt es kein aktuelles
+ * Objekt.<br />
  * Das erste oder das letzte Objekt einer Liste koennen durch einen Auftrag zum
  * aktuellen Objekt gemacht werden. Ausserdem kann das dem aktuellen Objekt
  * folgende Listenobjekt zum neuen aktuellen Objekt werden. <br />
@@ -119,7 +121,7 @@ public class List<ContentType> {
    */
   public boolean hasAccess() {
     // Es gibt keinen Zugriff, wenn current auf kein Element verweist.
-    return current != null; 
+    return current != null;
   }
 
   /**
@@ -177,11 +179,11 @@ public class List<ContentType> {
    * geschieht nichts.
    * 
    * @param pContent
-   *            das zu schreibende Objekt vom Typ ContentType
+   *                 das zu schreibende Objekt vom Typ ContentType
    */
   public void setContent(ContentType pContent) {
     // Nichts tun, wenn es keinen Inhalt oder kein aktuelles Element gibt.
-    if (pContent != null && this.hasAccess()) { 
+    if (pContent != null && this.hasAccess()) {
       current.setContentObject(pContent);
     }
   }
@@ -196,14 +198,14 @@ public class List<ContentType> {
    * nicht leer ist oder pContent gleich null ist, geschieht nichts.
    * 
    * @param pContent
-   *            das einzufuegende Objekt vom Typ ContentType
+   *                 das einzufuegende Objekt vom Typ ContentType
    */
   public void insert(ContentType pContent) {
     if (pContent != null) { // Nichts tun, wenn es keinen Inhalt gibt.
       if (this.hasAccess()) { // Fall: Es gibt ein aktuelles Element.
 
         // Neuen Knoten erstellen.
-        ListNode newNode = new ListNode(pContent); 
+        ListNode newNode = new ListNode(pContent);
 
         if (current != first) { // Fall: Nicht an erster Stelle einfuegen.
           ListNode previous = this.getPrevious(current);
@@ -214,12 +216,12 @@ public class List<ContentType> {
           first = newNode;
         }
 
-      } else { //Fall: Es gibt kein aktuelles Element.
+      } else { // Fall: Es gibt kein aktuelles Element.
 
         if (this.isEmpty()) { // Fall: In leere Liste einfuegen.
 
           // Neuen Knoten erstellen.
-          ListNode newNode = new ListNode(pContent); 
+          ListNode newNode = new ListNode(pContent);
 
           first = newNode;
           last = newNode;
@@ -237,7 +239,7 @@ public class List<ContentType> {
    * und es gibt weiterhin kein aktuelles Objekt (hasAccess() == false).
    * 
    * @param pContent
-   *            das anzuhaengende Objekt vom Typ ContentType
+   *                 das anzuhaengende Objekt vom Typ ContentType
    */
   public void append(ContentType pContent) {
     if (pContent != null) { // Nichts tun, wenn es keine Inhalt gibt.
@@ -247,7 +249,7 @@ public class List<ContentType> {
       } else { // Fall: An nicht-leere Liste anfuegen.
 
         // Neuen Knoten erstellen.
-        ListNode newNode = new ListNode(pContent); 
+        ListNode newNode = new ListNode(pContent);
 
         last.setNextNode(newNode);
         last = newNode; // Letzten Knoten aktualisieren.
@@ -264,11 +266,11 @@ public class List<ContentType> {
    * unveraendert. Insbesondere bleibt hasAccess identisch.
    * 
    * @param pList
-   *            die am Ende anzuhaengende Liste vom Typ List<ContentType>
+   *              die am Ende anzuhaengende Liste vom Typ List<ContentType>
    */
   public void concat(List<ContentType> pList) {
     if (pList != this && pList != null && !pList.isEmpty()) { // Nichts tun,
-    // wenn pList und this identisch, pList leer oder nicht existent.
+      // wenn pList und this identisch, pList leer oder nicht existent.
 
       if (this.isEmpty()) { // Fall: An leere Liste anfuegen.
         this.first = pList.first;
@@ -296,7 +298,7 @@ public class List<ContentType> {
    */
   public void remove() {
     // Nichts tun, wenn es kein aktuelle Element gibt oder die Liste leer ist.
-    if (this.hasAccess() && !this.isEmpty()) { 
+    if (this.hasAccess() && !this.isEmpty()) {
 
       if (current == first) {
         first = first.getNextNode();
@@ -313,7 +315,7 @@ public class List<ContentType> {
       current.setNextNode(null);
       current = temp;
 
-      //Beim loeschen des letzten Elements last auf null setzen. 
+      // Beim loeschen des letzten Elements last auf null setzen.
       if (this.isEmpty()) {
         last = null;
       }
@@ -321,16 +323,16 @@ public class List<ContentType> {
   }
 
   public int size() {
-		int i = 0; 
+    int i = 0;
     this.toFirst();
-		if (!this.isEmpty()) {
-			while (this.hasAccess()) {
-				i++;
-				this.next();
-			}
-		}
-		return i;
-	}
+    if (!this.isEmpty()) {
+      while (this.hasAccess()) {
+        i++;
+        this.next();
+      }
+    }
+    return i;
+  }
 
   /**
    * Liefert den Vorgaengerknoten des Knotens pNode. Ist die Liste leer, pNode
@@ -338,9 +340,10 @@ public class List<ContentType> {
    * wird null zurueckgegeben.
    *
    * @param pNode
-   *         der Knoten, dessen Vorgaenger zurueckgegeben werden soll
+   *              der Knoten, dessen Vorgaenger zurueckgegeben werden soll
    * @return der Vorgaenger des Knotens pNode oder null, falls die Liste leer ist,
-   *         pNode == null ist, pNode nicht in der Liste ist oder pNode der erste Knoten
+   *         pNode == null ist, pNode nicht in der Liste ist oder pNode der erste
+   *         Knoten
    *         der Liste ist
    */
   private ListNode getPrevious(ListNode pNode) {
@@ -354,5 +357,5 @@ public class List<ContentType> {
       return null;
     }
   }
-  
+
 }
