@@ -59,7 +59,7 @@ public class GUI extends JFrame {
             this.panel.remove(this.startButton);
             this.panel.revalidate();
             this.panel.repaint();
-            this.initGameInterface();
+            this.RenderGameInterface();
         });
 
         System.out.println("Start Button added");
@@ -105,7 +105,7 @@ public class GUI extends JFrame {
         });
     }
 
-    private void initGameInterface() {
+    private void RenderGameInterface() {
         this.game = new Game(this);
 
         this.imageLabels = new HashMap<>();
