@@ -1,18 +1,26 @@
 package classes;
 
 public class Game {
+    //@region: interface
     private GUI gameInterface;
 
+    //@region: Players 
     private Player player; 
-    private Dealer dealer;
+    private Player dealer;
 
+    //@region: Game states
+    private boolean isGameActive; 
+    private Player gameWinner; 
+
+    //@region: Misc atributes
     private Deck deck;
 
     public Game(GUI gameInterface) {
         this.gameInterface = gameInterface;
+        this.isGameActive = true;
 
         this.player = new Player("Spieler 1", new Deck());
-        this.dealer = new Dealer();
+        this.dealer = new Player("Dealer", new Deck());
 
         this.deck = new Deck();
         this.deck.init();
@@ -27,10 +35,24 @@ public class Game {
         player.addCard(this.deck.getCardStack().top());
         this.deck.getCardStack().pop();
         this.gameInterface.AddCardsToUI(player, player.getDeck().getCardStack().top());
+
+        //@todo: if player score is > 21 then loose the game.
     }
 
     public void stand()  {
 
+        int dealerScore = this.dealer.getScore();
+        int playerScore = this.player.getScore();
+
+        if (dealerScore == playerScore) {
+            this.setGameWinner(null);
+        } else if (dealerScore < 22 && (playerScore >= 22 || dealerScore > playerScore)) {
+            this.setGameWinner(this.dealer);
+        } else if (playerScore < 22 && (dealerScore >= 22 || playerScore > dealerScore)) {
+            this.setGameWinner(this.player);
+        }
+
+        System.out.println(this.getGameWinner());
     }
 
     //@region Setter/Getters
@@ -42,11 +64,27 @@ public class Game {
         this.player = player;
     }
 
-    public Dealer getDealer() {
-        return this.dealer;
+    public Player getDealer() {
+        return dealer;
     }
 
-    public void setDealer(Dealer dealer) {
+    public void setDealer(Player dealer) {
         this.dealer = dealer;
+    }
+
+    public boolean isGameActive() {
+        return isGameActive;
+    }
+
+    public void setGameActive(boolean isGameActive) {
+        this.isGameActive = isGameActive;
+    }
+
+    public Player getGameWinner() {
+        return gameWinner;
+    }
+
+    private void setGameWinner(Player gameWinner) {
+        this.gameWinner = gameWinner;
     }
 }

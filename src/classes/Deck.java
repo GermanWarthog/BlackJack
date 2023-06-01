@@ -24,10 +24,11 @@ public class Deck {
 
     private void initImages() {
         for (int i = 2; i < 15; i++) {
-            images[i - 2] = new ImageIcon("../images/Karo-" + i + ".png");
-            images[i + 11] = new ImageIcon("../images/Herz-" + i + ".png");
-            images[i + 24] = new ImageIcon("../images/Pik-" + i + ".png");
-            images[i + 37] = new ImageIcon("../images/Kreuz-" + i + ".png");
+            //@comment: Diese Bilder wurden genommen, da sie eine einheitliche Größe haben.
+            images[i - 2] = new ImageIcon("../imgs/" + i + "_of_diamonds.png");
+            images[i + 11] = new ImageIcon("../imgs/" + i + "_of_hearts.png");
+            images[i + 24] = new ImageIcon("../imgs/" + i + "_of_spades.png");
+            images[i + 37] = new ImageIcon("../imgs/" + i + "_of_clubs.png");
         }
     }
     
@@ -78,18 +79,9 @@ public class Deck {
         this.cards = cards;
     }
 
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
-    }
-
     public Stack<Card> getCardStack() {
         return this.cardStack;
     }
-
 
     public void setCardStack(Stack<Card> cardStack) {
         this.cardStack = cardStack;
