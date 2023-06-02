@@ -158,7 +158,6 @@ public class GUI extends JFrame {
             this.game.stand();
             this.game.setGameActive(false);
 
-            // @todo: if null then no winner
             this.winnerLabel = new JLabel("Gewinner: " + ((this.game.getGameWinner() != null) ? this.game.getGameWinner().getName() : "Unendschieden"));
             this.winnerLabel.setBounds(540, 10, 400, 100);
             this.panel.add(this.winnerLabel);
