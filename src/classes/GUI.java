@@ -133,8 +133,11 @@ public class GUI extends JFrame {
             if (!this.game.isGameActive()) {
                 return;
             }
-            this.game.draw(dealer);
 
+            if (this.imageLabels.get(this.game.getPlayer().getName()).size() > 2 ) {
+                this.game.draw(dealer);
+            }
+            
             this.imageLabels.get(dealer.getName()).toFirst();
             
             JLabel firstDealerCard = this.imageLabels.get(dealer.getName()).getContent();
@@ -156,8 +159,8 @@ public class GUI extends JFrame {
             this.game.setGameActive(false);
 
             // @todo: if null then no winner
-            this.winnerLabel = new JLabel("Gewinner: " + ((this.game.getGameWinner() != null) ? this.game.getPlayer().getName() : "Unendshcieden"));
-            this.winnerLabel.setBounds(550, 10, 100, 100);
+            this.winnerLabel = new JLabel("Gewinner: " + ((this.game.getGameWinner() != null) ? this.game.getGameWinner().getName() : "Unendschieden"));
+            this.winnerLabel.setBounds(540, 10, 400, 100);
             this.panel.add(this.winnerLabel);
 
             this.panel.revalidate();
@@ -167,11 +170,11 @@ public class GUI extends JFrame {
         });
 
         this.playerScore = new JLabel("Spieler Hand: 0");
-        this.playerScore.setBounds(400, 10, 100, 100);
+        this.playerScore.setBounds(300, 10, 400, 100);
         this.playerScore.setVisible(false);
 
         this.dealerScore = new JLabel("Dealer Hand: 0");
-        this.dealerScore.setBounds(700, 10, 100, 100);
+        this.dealerScore.setBounds(800, 10, 400, 100);
         this.dealerScore.setVisible(false);
 
 

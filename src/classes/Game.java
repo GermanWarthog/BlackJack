@@ -35,12 +35,9 @@ public class Game {
         player.addCard(this.deck.getCardStack().top());
         this.deck.getCardStack().pop();
         this.gameInterface.AddCardsToUI(player, player.getDeck().getCardStack().top());
-
-        //@todo: if player score is > 21 then loose the game.
     }
 
     public void stand()  {
-
         int dealerScore = this.dealer.getScore();
         int playerScore = this.player.getScore();
 
